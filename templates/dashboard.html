@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Assess-pass</title>
+</head>
+<body>
+<h4>Welcome, {{ username }}</h4>
+{% if url %}
+    <h6>URL: <a href="{{ url }}">{{ url }}</a></h6>
+    <form action="create-form" method="post">
+        <input type="text" name="username" value="{{ username }}" hidden>
+        <input type="text" name="type" value="new" hidden>
+        <input type="submit" name="submit" value="Create New Form">
+    </form>
+{% else %}
+    <form action="create-form" method="post">
+        <label for="url"></label>
+        <input type="text" name="url">
+        <input type="text" name="username" value="{{ username }}" hidden>
+        <input type="submit" name="submit" value="Create Form">
+    </form>
+{% endif %}
+</body>
+</html>

@@ -1,5 +1,5 @@
 import pymysql.cursors
-from flask import Flask, render_template, request, redirect
+from flask import Flask, render_template, request, redirect, url_for
 from pymysql import connect
 import random
 import string
@@ -16,7 +16,7 @@ connection = connect(
 
 @app.route('/')
 def home():
-    return render_template('home.html')
+    return render_template('index.html')
 
 
 @app.route('/url/<url>')
@@ -28,7 +28,7 @@ def start_assessment(url: string):
         return render_template('start-assessment.html', start=False, authenticated=False, url=url)
 
 
-@app.route('/login', methods=['GET', 'POST'])
+@app.route('/dashboard', methods=['POST'])
 def login():
     username = request.form.get('username')
     password = request.form.get('password')
@@ -39,13 +39,11 @@ def login():
             if data is None or data[5] != password:
                 return render_template('incorrect-password.html')
         return render_template('dashboard.html', username=username, url=None)
-    else:
-        return render_template('faculty-login.html')
 
 
-@app.route('/register', methods=['GET', 'POST'])
+@app.route('/register', methods=['GET'])
 def register():
-    return 'register'
+    return render_template('register.html')
 
 
 @app.route('/create-form', methods=['POST'])
@@ -54,7 +52,7 @@ def create_form():
     url = None
     username = request.form.get('username')
     if new:
-        render_template('dashboard.html', url=url, username=username)
+        return render_template('dashboard.html', url=url, username=username)
     url = request.form.get('url')
     form_url = generate_url(url)
     return render_template('dashboard.html', url=form_url, username=username)

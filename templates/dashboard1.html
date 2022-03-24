@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<title>Dashboard</title>
+	<title>Login V1</title>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 <!--===============================================================================================-->
@@ -18,7 +18,6 @@
 	<link rel="stylesheet" type="text/css" href={{ url_for('static', filename='vendor/select2/select2.min.css') }} >
 <!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href={{ url_for('static', filename='css/util.css') }} >
-<!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href={{ url_for('static', filename='css/main.css') }} >
 <!--===============================================================================================-->
 </head>
@@ -28,42 +27,30 @@
 		<div class="container-login100">
 			<div class="wrap-login100">
 				<div class="login100-pic js-tilt" data-tilt>
-                    <h4>Welcome, {{ username }}</h4>
+					<img src={{ url_for('static', filename='images/img-01.png') }} alt="IMG">
 				</div>
-                {% if url %}
-                    <span class="login100-form-title">
-                        URL: <a href="{{ url }}"><h6>{{ url }}</h6></a>
-					</span>
-                    <form class="login100-form validate-form" method="post" action="create-form">
-                        <input type="text" name="username" value="{{ username }}" hidden>
-                        <input type="text" name="new" value="new" hidden>
-                        <div class="container-login100-form-btn">
-                            <button class="login100-form-btn">
-                                Create New Form
-                            </button>
-                        </div>
-				    </form>
-                {% else %}
-                    <form class="login100-form validate-form" method="post" action="create-form">
-                        <span class="login100-form-title">
-                            Create Form
-                        </span>
-                        <input type="text" name="username" value="{{ username }}" hidden>
-                        <div class="wrap-input100">
-                            <input class="input100" type="url" name="url" placeholder="Enter Form URL" required>
-                            <span class="focus-input100"></span>
-                            <span class="symbol-input100">
-                                <i class="fa fa-paper-plane" aria-hidden="true"></i>
-                            </span>
-                        </div>
+                <span class="login100-form-title">
+                    Welcome, {{ username }}
+                </span>
 
-                        <div class="container-login100-form-btn">
-                            <button class="login100-form-btn">
-                                Generate Form
-                            </button>
-                        </div>
-				    </form>
-                {% endif %}
+                <form class="login100-form validate-form" method="post" action="login">
+                    <span class="login100-form-title">
+                        Enter Google Form Link
+                    </span>
+                    <div class="wrap-input100 validate-input">
+						<input class="input100" type="url" name="url" placeholder="Enter Form URL">
+						<span class="focus-input100"></span>
+						<span class="symbol-input100">
+							<i class="fa fa-email" aria-hidden="true"></i>
+						</span>
+                        hello
+					</div>
+                    <div class="container-login100-form-btn">
+                        <button class="login100-form-btn">
+                            Create Link
+                        </button>
+                    </div>
+				</form>
 			</div>
 		</div>
 	</div>

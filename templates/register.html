@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<title>Dashboard</title>
+	<title>Register</title>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 <!--===============================================================================================-->
@@ -18,7 +18,6 @@
 	<link rel="stylesheet" type="text/css" href={{ url_for('static', filename='vendor/select2/select2.min.css') }} >
 <!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href={{ url_for('static', filename='css/util.css') }} >
-<!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href={{ url_for('static', filename='css/main.css') }} >
 <!--===============================================================================================-->
 </head>
@@ -28,42 +27,77 @@
 		<div class="container-login100">
 			<div class="wrap-login100">
 				<div class="login100-pic js-tilt" data-tilt>
-                    <h4>Welcome, {{ username }}</h4>
+					<img src={{ url_for('static', filename='images/img-01.png') }} alt="IMG">
 				</div>
-                {% if url %}
-                    <span class="login100-form-title">
-                        URL: <a href="{{ url }}"><h6>{{ url }}</h6></a>
-					</span>
-                    <form class="login100-form validate-form" method="post" action="create-form">
-                        <input type="text" name="username" value="{{ username }}" hidden>
-                        <input type="text" name="new" value="new" hidden>
-                        <div class="container-login100-form-btn">
-                            <button class="login100-form-btn">
-                                Create New Form
-                            </button>
-                        </div>
-				    </form>
-                {% else %}
-                    <form class="login100-form validate-form" method="post" action="create-form">
-                        <span class="login100-form-title">
-                            Create Form
-                        </span>
-                        <input type="text" name="username" value="{{ username }}" hidden>
-                        <div class="wrap-input100">
-                            <input class="input100" type="url" name="url" placeholder="Enter Form URL" required>
-                            <span class="focus-input100"></span>
-                            <span class="symbol-input100">
-                                <i class="fa fa-paper-plane" aria-hidden="true"></i>
-                            </span>
-                        </div>
 
-                        <div class="container-login100-form-btn">
-                            <button class="login100-form-btn">
-                                Generate Form
-                            </button>
-                        </div>
-				    </form>
-                {% endif %}
+				<form class="login100-form validate-form" method="post" action="register">
+					<span class="login100-form-title">
+						New Registration
+					</span>
+
+					<div class="wrap-input100 validate-input" data-validate="Valid name is required">
+						<input class="input100" type="text" name="name" placeholder="Name" required>
+						<span class="symbol-input100">
+							<i class="fa fa-envelope" aria-hidden="true"></i>
+						</span>
+					</div>
+
+                    <div class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
+						<input class="input100" type="text" name="email" placeholder="Email" required>
+						<span class="symbol-input100">
+							<i class="fa fa-envelope" aria-hidden="true"></i>
+						</span>
+					</div>
+
+                    <div class="wrap-input100">
+						<input class="input100" type="number" name="phone" placeholder="Phone">
+						<span class="symbol-input100">
+							<i class="fa fa-envelope" aria-hidden="true"></i>
+						</span>
+					</div>
+
+                    <div class="wrap-input100" >
+						<input class="input100" type="text" name="address" placeholder="Address">
+						<span class="symbol-input100">
+							<i class="fa fa-envelope" aria-hidden="true"></i>
+						</span>
+					</div>
+
+                    <div class="wrap-input100 validate-input" data-validate="Valid selection required">
+						<input class="input100" type="date" name="dob" placeholder="Date of Birth" required>
+						<span class="symbol-input100">
+							<i class="fa fa-envelope" aria-hidden="true"></i>
+						</span>
+					</div>
+
+                    <div class="wrap-input100 validate-input" data-validate="Valid aadhaar required e.g., 1234 5678 9876">
+						<input class="input100" type="number" name="aadhaar" placeholder="Aadhaar Number" required>
+						<span class="symbol-input100">
+							<i class="fa fa-envelope" aria-hidden="true"></i>
+						</span>
+					</div>
+
+
+					<div class="wrap-input100 validate-input" data-validate = "Password is required">
+						<input class="input100" type="password" name="password" placeholder="Password" required>
+						<span class="symbol-input100">
+							<i class="fa fa-lock" aria-hidden="true"></i>
+						</span>
+					</div>
+
+					<div class="container-login100-form-btn">
+						<button class="login100-form-btn">
+							Register
+						</button>
+					</div>
+
+					<div class="text-center p-t-136">
+						<a class="txt2" href="index">
+							Login?
+							<i class="fa fa-long-arrow-right m-l-5" aria-hidden="true"></i>
+						</a>
+					</div>
+				</form>
 			</div>
 		</div>
 	</div>
